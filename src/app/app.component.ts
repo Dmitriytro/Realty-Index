@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  currentTab: string = 'recipe';
+  switchTab(value){
+    this.currentTab = value;
+  }
 }
