@@ -18,6 +18,10 @@ export class ShoppingService implements OnInit{
     this.ingredients.push(item);
     this.listChanging.emit();
   }
+  addIngredients(items){
+    this.ingredients.push(...items);
+    this.listChanging.emit();
+  }
   deleteIngredient(){
     if(this.selectedIngredient){
       this.ingredients = this.ingredients.filter(elem => elem !== this.selectedIngredient);
