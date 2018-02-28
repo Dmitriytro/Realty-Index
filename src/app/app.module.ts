@@ -18,6 +18,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { RecipeService } from "./recipe.service";
 import { ShoppingService } from "./shopping.service";
 import { RoutingModule } from "./routing/routing.module";
+import {AuthGuardService} from "./auth-guard.service";
 
 
 
@@ -42,7 +43,7 @@ import { RoutingModule } from "./routing/routing.module";
     HttpModule,
     RoutingModule
   ],
-  providers: [RecipeService,ShoppingService],
+  providers: [RecipeService,ShoppingService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
