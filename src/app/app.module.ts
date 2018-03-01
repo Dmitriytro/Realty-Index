@@ -18,7 +18,8 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { RecipeService } from "./recipe.service";
 import { ShoppingService } from "./shopping.service";
 import { RoutingModule } from "./routing/routing.module";
-import {AuthGuardService} from "./auth-guard.service";
+import { AuthGuardService } from "./auth-guard.service";
+import { NoRecipeChoosedComponent } from './recipes/no-recipe-choosed/no-recipe-choosed.component';
 
 
 
@@ -35,7 +36,8 @@ import {AuthGuardService} from "./auth-guard.service";
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    DropdownDirective
+    DropdownDirective,
+    NoRecipeChoosedComponent
   ],
   imports: [
     BrowserModule,
