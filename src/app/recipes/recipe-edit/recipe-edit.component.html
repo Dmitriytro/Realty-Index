@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit(f)" #f='ngForm'>
+      <div  ngModelGroup="userData">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-2">
+              <label for="name">Name</label>
+            </div>
+            <div class="col-xs-10">
+              <input type="text"
+                     id="name"
+                     name="name"
+                     class="form-control"
+                     ngModel
+                     required
+                     #name="ngModel">
+              <span *ngIf="!name.valid && name.touched">Name is required</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text"
+                 id="description"
+                 name="description"
+                 class="form-control"
+                 ngModel
+                 required
+                 #description="ngModel">
+          <span *ngIf="!description.valid && description.touched">description is required</span>
+        </div>
+
+        <div class="form-group">
+          <label for="imagePath">imagePath</label>
+          <input type="text"
+                 id="imagePath"
+                 name="imagePath"
+                 class="form-control"
+                 ngModel
+                 required
+                 #imagePath="ngModel">
+          <span *ngIf="!imagePath.valid && imagePath.touched">imagePath is required</span>
+        </div>
+        <div class="form-group">
+          <div class="radio" *ngFor="let gender of genders">
+            <label >
+              <input type="radio"
+                     name="gender"
+                     ngModel
+                     required
+                     [value]="gender"
+              />
+              {{ gender }}
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="secret">Secret question</label>
+            <select
+              class="form-control"
+              name="question"
+              id="secret"
+              [ngModel]="defaultQuestion">
+              <option value="firstOption">first option</option>
+              <option value="secondOption">second option</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="questionAnswer"
+                      class="form-control"
+                      rows="3"
+                      [(ngModel)]="answer"></textarea>
+          </div>
+        </div>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!f.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

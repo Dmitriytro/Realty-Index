@@ -19,7 +19,10 @@ import { RecipeService } from "./recipe.service";
 import { ShoppingService } from "./shopping.service";
 import { RoutingModule } from "./routing/routing.module";
 import { AuthGuardService } from "./auth-guard.service";
-import { NoRecipeChoosedComponent } from './recipes/no-recipe-choosed/no-recipe-choosed.component';
+import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
+import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { FormComponent } from './form/form.component';
 
 
 
@@ -37,13 +40,17 @@ import { NoRecipeChoosedComponent } from './recipes/no-recipe-choosed/no-recipe-
     ShoppingListComponent,
     ShoppingEditComponent,
     DropdownDirective,
-    NoRecipeChoosedComponent
+    NoRecipeSelectedComponent,
+    NoRecipeSelectedComponent,
+    RecipeEditComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule
   ],
   providers: [RecipeService,ShoppingService,AuthGuardService],
   bootstrap: [AppComponent]

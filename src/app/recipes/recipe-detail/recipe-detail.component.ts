@@ -14,8 +14,8 @@ export class RecipeDetailComponent implements OnInit {
   constructor(private shoppinglist: ShoppingService, private recipeService: RecipeService,private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe((paramId) => {
-      const id = +paramId['id'];
+    this.route.params.subscribe((params) => {
+      const id = +params['id'];
       this.recipe = this.recipeService.getRecipes().find((elem) => id === elem.id);
     });
   }
