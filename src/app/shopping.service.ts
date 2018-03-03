@@ -1,32 +1,31 @@
-import {Injectable, EventEmitter, OnInit} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import Ingredient from "./shared/ingredient.model";
+import {Subject} from "rxjs";
 
 @Injectable()
 export class ShoppingService implements OnInit{
-  listChanging = new EventEmitter<void>();
-  selectedIngredient: Ingredient = null;
+  listChanging = new Subject<void>();
+  editIngredient: Subject = new Subject<number>();
   private ingredients: Ingredient[] = [
     new Ingredient('apples',5),
     new Ingredient('tomatoes',2)
   ];
-  constructor() { }
+  constructor() {}
   ngOnInit(){}
   getIngredients(){
     return this.ingredients.slice()
   }
-  addIngredient(item: Ingredient){
-    this.ingredients.push(item);
-    this.listChanging.emit();
+  getIngredient(index: number) {
+    return this.getIngredients()[index];
   }
-  addIngredients(items){
-    this.ingredients.push(...items);
-    this.listChanging.emit();
+  addIngredient(ingredient: Ingredient){
+    this.ingredients.push(ingredient);
+    this.listChanging.next();
   }
-  deleteIngredient(){
-    if(this.selectedIngredient){
-      this.ingredients = this.ingredients.filter(elem => elem !== this.selectedIngredient);
-      this.selectedIngredient = null;
-      this.listChanging.emit();
-    }
-  }
+  update(index: number, ingredient: Ingredient) {
+    const arr = this.getIngredients();
+    arr[index] = ingredient;
+    this.ingredients = arr;
+    this.listChanging.next();
+  };
 }

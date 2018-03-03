@@ -30,18 +30,7 @@ export class RecipeEditComponent implements OnInit {
     })
   }
   onSubmit(){
-    console.log(this.form);
-    // this.user.username = this.form.value.username;
-    // this.user.email = this.form.value.email;
-    // this.user.secretQuestion = this.form.value.secretQuestion;
-    // this.user.answer = this.form.value.answer;
-    // this.user.gender = this.form.value.gender;
     this.user = {...this.form.value.userData};
     console.log(this.user);
   }
-  // autoFillUp(){
-  //   this.form.form.patchValue({
-  //     userData: {}
-  //   })
-  // }
 }

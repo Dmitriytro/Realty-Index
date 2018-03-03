@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 
 import { AppComponent } from './app.component';
@@ -20,9 +20,7 @@ import { ShoppingService } from "./shopping.service";
 import { RoutingModule } from "./routing/routing.module";
 import { AuthGuardService } from "./auth-guard.service";
 import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
-import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { FormComponent } from './form/form.component';
 
 
 
@@ -41,16 +39,14 @@ import { FormComponent } from './form/form.component';
     ShoppingEditComponent,
     DropdownDirective,
     NoRecipeSelectedComponent,
-    NoRecipeSelectedComponent,
-    RecipeEditComponent,
-    FormComponent
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RoutingModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [RecipeService,ShoppingService,AuthGuardService],
   bootstrap: [AppComponent]
