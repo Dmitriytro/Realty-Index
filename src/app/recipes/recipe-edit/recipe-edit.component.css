@@ -1,6 +1,12 @@
 input.ng-touched{
-  border: 1px solid darkred;
+  border: 2px solid darkred;
 }
 input.ng-valid{
-  border: 1px solid limegreen;
+  border: 2px solid limegreen;
+}
+textarea.ng-touched{
+  border: 2px solid darkred;
+}
+textarea.ng-valid{
+  border: 2px solid limegreen;
 }

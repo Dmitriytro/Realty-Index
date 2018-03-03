@@ -1,80 +1,81 @@
 <div class="row">
   <div class="col-xs-12">
-    <form (ngSubmit)="onSubmit(f)" #f='ngForm'>
-      <div  ngModelGroup="userData">
+    <form (ngSubmit)="onSubmit()" [formGroup]="recipeForm">
+      <div>
+        <div class="row">
+          <div class="col-xs-2">
+            <div class="form-group">
+              <button class="btn btn-success"
+                      [disabled]="!recipeForm.valid"
+                      type="submit">Save</button>
+            </div>
+          </div>
+          <div class="col-xs-1">
+            <div class="form-group">
+              <button class="btn btn-danger"
+                      (click)="cancel()"
+                      type="button">Cancel</button>
+            </div>
+          </div>
+        </div>
         <div class="form-group">
           <div class="row">
             <div class="col-xs-2">
-              <label for="name">Name</label>
+              <label for="name">Recipe Name</label>
             </div>
             <div class="col-xs-10">
               <input type="text"
                      id="name"
-                     name="name"
-                     class="form-control"
-                     ngModel
-                     required
-                     #name="ngModel">
-              <span *ngIf="!name.valid && name.touched">Name is required</span>
+                     formControlName="name"
+                     class="form-control">
             </div>
           </div>
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <input type="text"
+          <textarea
                  id="description"
-                 name="description"
+                 formControlName="description"
                  class="form-control"
-                 ngModel
-                 required
-                 #description="ngModel">
-          <span *ngIf="!description.valid && description.touched">description is required</span>
+                 rows="3"></textarea>
         </div>
-
         <div class="form-group">
           <label for="imagePath">imagePath</label>
           <input type="text"
                  id="imagePath"
-                 name="imagePath"
-                 class="form-control"
-                 ngModel
-                 required
-                 #imagePath="ngModel">
-          <span *ngIf="!imagePath.valid && imagePath.touched">imagePath is required</span>
+                 formControlName="imagePath"
+                 class="form-control">
         </div>
-        <div class="form-group">
-          <div class="radio" *ngFor="let gender of genders">
-            <label >
-              <input type="radio"
-                     name="gender"
-                     ngModel
-                     required
-                     [value]="gender"
-              />
-              {{ gender }}
-            </label>
-          </div>
-          <div class="form-group">
-            <label for="secret">Secret question</label>
-            <select
-              class="form-control"
-              name="question"
-              id="secret"
-              [ngModel]="defaultQuestion">
-              <option value="firstOption">first option</option>
-              <option value="secondOption">second option</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <textarea name="questionAnswer"
-                      class="form-control"
-                      rows="3"
-                      [(ngModel)]="answer"></textarea>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group" formArrayName="ingredients">
+              <div class="row"
+                   *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index"
+                   [formGroupName]="i">
+                <div class="col-xs-8">
+                  <input type="text"
+                         formControlName="name"
+                         class="form-control">
+                </div>
+                <div class="col-xs-2">
+                  <input type="number"
+                         formControlName="amount"
+                         class="form-control">
+                </div>
+                <div class="col-xs-2">
+                  <button class="btn btn-danger" (click)="removeIngredient(i)">X</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <button class="btn btn-success"
-                type="submit"
-                [disabled]="!f.valid">Submit</button>
+        <div class="row">
+          <div class="col-xs-12">
+            <button class="btn btn-success"
+                    type="button"
+                    (click)="onAddIngredient()">Add Ingredient</button>
+          </div>
+        </div>
       </div>
     </form>
   </div>

@@ -22,10 +22,18 @@ export class ShoppingService implements OnInit{
     this.ingredients.push(ingredient);
     this.listChanging.next();
   }
+  addIngredients(ings: Ingredient[]){
+    this.ingredients = [...this.ingredients,...ings];
+    this.listChanging.next();
+  }
   update(index: number, ingredient: Ingredient) {
     const arr = this.getIngredients();
     arr[index] = ingredient;
     this.ingredients = arr;
     this.listChanging.next();
   };
+  delete(index: number) {
+    this.ingredients.splice(index,1);
+    this.listChanging.next();
+  }
 }

@@ -1,21 +1,23 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
 import Ingredient from "../../shared/ingredient.model";
 import {ShoppingService} from "../../shopping.service";
 import {NgForm} from "@angular/forms";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit {
+export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') ingForm: NgForm;
+  subscription: Subscription;
   editMode: boolean = false;
   selected: Ingredient = null;
   index: number = null;
   constructor(private shoppingList: ShoppingService) { }
   ngOnInit() {
-    this.shoppingList.editIngredient.subscribe((index: number) => {
+    this.subscription = this.shoppingList.editIngredient.subscribe((index: number) => {
       this.editMode = true;
       this.index = index;
       this.selected = this.shoppingList.getIngredient(index);
@@ -32,13 +34,18 @@ export class ShoppingEditComponent implements OnInit {
   }
   onUpdate(){
     this.shoppingList.update(this.index, this.ingForm.value);
-    this.editMode = false;
-    this.selected = null;
   }
   onDeleteItem(){
-
+    this.shoppingList.delete(this.index);
+    this.onClean();
   }
   onClean(){
+    this.index = null;
+    this.selected = null;
+    this.editMode = false;
     this.ingForm.reset()
+  }
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 }
