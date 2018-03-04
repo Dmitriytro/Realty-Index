@@ -21,6 +21,8 @@ import { RoutingModule } from "./routing/routing.module";
 import { AuthGuardService } from "./auth-guard.service";
 import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { ReversePipe } from './reverse.pipe';
+import { SortByPipe } from './sort-by.pipe';
 
 
 
@@ -39,7 +41,9 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     ShoppingEditComponent,
     DropdownDirective,
     NoRecipeSelectedComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    ReversePipe,
+    SortByPipe
   ],
   imports: [
     BrowserModule,

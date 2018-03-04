@@ -4,8 +4,8 @@ import {Subject} from "rxjs";
 
 @Injectable()
 export class ShoppingService implements OnInit{
-  listChanging = new Subject<void>();
-  editIngredient: Subject = new Subject<number>();
+  listChanging: Subject<void> = new Subject<void>();
+  editIngredient: Subject<number> = new Subject<number>();
   private ingredients: Ingredient[] = [
     new Ingredient('apples',5),
     new Ingredient('tomatoes',2)
