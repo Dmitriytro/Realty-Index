@@ -23,7 +23,7 @@ import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recip
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { ReversePipe } from './reverse.pipe';
 import { SortByPipe } from './sort-by.pipe';
-
+import {DataStorageService} from "./shared/data-storage.service";
 
 
 @NgModule({
@@ -52,7 +52,7 @@ import { SortByPipe } from './sort-by.pipe';
     RoutingModule,
     ReactiveFormsModule
   ],
-  providers: [RecipeService,ShoppingService,AuthGuardService],
+  providers: [RecipeService,ShoppingService,AuthGuardService,DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
