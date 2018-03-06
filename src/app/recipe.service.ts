@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import Recipe from "./recipes/recipe.model";
 import {Subject, Observable} from "rxjs";
-import {Http, Headers} from "@angular/http";
+import { Headers} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class RecipeService {
@@ -10,7 +11,7 @@ export class RecipeService {
   selectedRecipe = new Subject<Recipe>();
   recipeChanged = new Subject<void>();
   recipes: Recipe[] = [];
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
   saveRecipe(form: Recipe): Observable<any>{
     const header = new Headers({'Content-Type':'application/json'});
     return this.http.post(this.serverUrl+this.fb,form,{headers:header})
