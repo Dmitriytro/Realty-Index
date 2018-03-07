@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import { StoreModule } from "@ngrx/store";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -23,7 +24,8 @@ import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recip
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { ReversePipe } from './reverse.pipe';
 import { SortByPipe } from './sort-by.pipe';
-import {DataStorageService} from "./shared/data-storage.service";
+import { DataStorageService } from "./shared/data-storage.service";
+import { shoppingListReducer } from "./shopping-list/store/shoppong-list.reducer";
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import {DataStorageService} from "./shared/data-storage.service";
     FormsModule,
     HttpClientModule,
     RoutingModule,
+    StoreModule.forRoot({ shoppingList: shoppingListReducer }),
     ReactiveFormsModule
   ],
   providers: [RecipeService,ShoppingService,AuthGuardService,DataStorageService],
