@@ -1,13 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { StoreModule } from "@ngrx/store";
+import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { NavigationSearchComponent } from './navigation/navigation-search/navigation-search.component';
-import { NavigationLabelComponent } from './navigation/navigation-label/navigation-label.component';
 import { NavigationTabsComponent } from './navigation/navigation-tabs/navigation-tabs.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
@@ -26,36 +24,35 @@ import { ReversePipe } from './reverse.pipe';
 import { SortByPipe } from './sort-by.pipe';
 import { DataStorageService } from "./shared/data-storage.service";
 import { shoppingListReducer } from "./shopping-list/store/shoppong-list.reducer";
+import {ServerCommunicationService} from "./server-communication.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    NavigationSearchComponent,
-    NavigationLabelComponent,
-    NavigationTabsComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    DropdownDirective,
-    NoRecipeSelectedComponent,
-    RecipeEditComponent,
-    ReversePipe,
-    SortByPipe
+    NavigationTabsComponent
+    // RecipesComponent,
+    // RecipeListComponent,
+    // RecipeDetailComponent,
+    // RecipeItemComponent,
+    // ShoppingListComponent,
+    // ShoppingEditComponent,
+    // DropdownDirective,
+    // NoRecipeSelectedComponent,
+    // RecipeEditComponent,
+    // ReversePipe,
+    // SortByPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
-    RoutingModule,
-    StoreModule.forRoot({ shoppingList: shoppingListReducer }),
-    ReactiveFormsModule
+    HttpClientModule
+    // RoutingModule,
+    // StoreModule.forRoot({ shoppingList: shoppingListReducer }),
+    // ReactiveFormsModule
   ],
-  providers: [RecipeService,ShoppingService,AuthGuardService,DataStorageService],
+  providers: [ServerCommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

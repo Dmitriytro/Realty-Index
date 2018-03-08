@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {DataStorageService} from "../../shared/data-storage.service";
 
 @Component({
   selector: 'app-navigation-tabs',
@@ -7,13 +6,7 @@ import {DataStorageService} from "../../shared/data-storage.service";
   styleUrls: ['navigation-tabs.component.css']
 })
 export class NavigationTabsComponent implements OnInit{
-  constructor(private dataStorage: DataStorageService) { }
+  constructor() { }
 
   ngOnInit() {}
-  fetch(){
-    this.dataStorage.fetchRecipe()
-  }
-  save(){
-    this.dataStorage.addRecipes()
-  }
 }
