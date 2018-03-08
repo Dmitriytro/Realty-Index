@@ -15,6 +15,11 @@ export class NavigationComponent implements OnInit {
   search(searchInput: NgForm){
     console.log(searchInput);
     this.serverCommunication.fetch(searchInput.value)
-      .subscribe((responce) => console.log(responce));
+      .subscribe((responce) => console.log(responce),
+        (error) => {
+          let parser = new DOMParser();
+          let xmlDoc = parser.parseFromString(error,"text/xml");
+        console.log(`Error: ${xmlDoc}`)
+        });
   }
 }
