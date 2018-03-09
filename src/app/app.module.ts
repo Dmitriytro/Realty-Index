@@ -25,13 +25,18 @@ import { SortByPipe } from './sort-by.pipe';
 import { DataStorageService } from "./shared/data-storage.service";
 import { shoppingListReducer } from "./shopping-list/store/shoppong-list.reducer";
 import {ServerCommunicationService} from "./server-communication.service";
+import { RealtyListComponent } from './realty-list/realty-list.component';
+import { RealtyItemComponent } from './realty-list/realty-item/realty-item.component';
+import {RealtyDataService} from "./realty-data.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    NavigationTabsComponent
+    NavigationTabsComponent,
+    RealtyListComponent,
+    RealtyItemComponent
     // RecipesComponent,
     // RecipeListComponent,
     // RecipeDetailComponent,
@@ -52,7 +57,7 @@ import {ServerCommunicationService} from "./server-communication.service";
     // StoreModule.forRoot({ shoppingList: shoppingListReducer }),
     // ReactiveFormsModule
   ],
-  providers: [ServerCommunicationService],
+  providers: [ServerCommunicationService,RealtyDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

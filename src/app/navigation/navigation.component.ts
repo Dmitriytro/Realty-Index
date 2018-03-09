@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {ServerCommunicationService} from "../server-communication.service";
+import {RealtyDataService} from "../realty-data.service";
 
 @Component({
   selector: 'app-navigation',
@@ -8,18 +8,11 @@ import {ServerCommunicationService} from "../server-communication.service";
   styleUrls: ['navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  constructor(private serverCommunication: ServerCommunicationService) { }
+  constructor(private data: RealtyDataService) { }
 
   ngOnInit() {}
 
   search(searchInput: NgForm){
-    console.log(searchInput);
-    this.serverCommunication.fetch(searchInput.value)
-      .subscribe((responce) => console.log(responce),
-        (error) => {
-          let parser = new DOMParser();
-          let xmlDoc = parser.parseFromString(error,"text/xml");
-        console.log(`Error: ${xmlDoc}`)
-        });
+    this.data.fetchingData(searchInput.value);
   }
 }
