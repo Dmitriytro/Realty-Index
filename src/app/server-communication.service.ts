@@ -1,30 +1,23 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
 import { ZWSID } from "../../zwsid";
+import {Params} from "./realty-list/params.model";
 
 @Injectable()
 export class ServerCommunicationService {
   key: string = ZWSID;
-  params = {
-    zip: 97219,
-    propertytype: 'TOWNHOUSE%2FROWHOUSE',
-    orderby: 'assdttlvalue',
-    page: 1,
-    pagesize: 10
-  };
+  params = new Params( `97219`,'TOWNHOUSE/ROWHOUSE','assdttlvalue','1','10');
   httpOptions = {
     headers: new HttpHeaders({
       'Accept':  'application/json',
       'apikey': `${this.key}`
     })
-    // ,
-    // params: new HttpParams({
-    //   'postalcode': `${this.params.zip}`
-    // })
   };
-  serverUrl: string = `https://search.onboard-apis.com/propertyapi/v1.0.0/property/address?postalcode=${this.params.zip}&propertytype=${this.params.propertytype}&orderby=${this.params.orderby}&page=${this.params.page}&pagesize=${this.params.pagesize}`;
+  serverUrl: string = `https://search.onboard-apis.com/propertyapi/v1.0.0/property/address`;
   constructor(private httpClient: HttpClient) { }
-  fetching(term: string){
+  fetching(body){
+    this.params = {...this.params,...body};
+    this.httpOptions['params'] = this.params;
     return this.httpClient.get(this.serverUrl,this.httpOptions)
   }
 

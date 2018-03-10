@@ -14,5 +14,6 @@ export class NavigationComponent implements OnInit {
 
   search(searchInput: NgForm){
     this.data.fetchingData(searchInput.value);
+    searchInput.reset();
   }
 }
