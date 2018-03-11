@@ -16,7 +16,6 @@ export class RealtyListComponent implements OnInit,OnDestroy {
   ngOnInit() {
     this.renewList();
     this.subscription = this.data.changeEmitter.subscribe(() => {
-      console.log('changeEmitter');
       this.renewList()
     });
   }
