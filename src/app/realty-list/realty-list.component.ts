@@ -1,28 +1,20 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Realty} from "./realty.model";
-import {RealtyDataService} from "../realty-data.service";
-import {Subscription} from "rxjs/Subscription";
+import {Store} from "@ngrx/store";
+import {InitialState} from "./store/initialState.model";
 
 @Component({
   selector: 'app-realty-list',
   templateUrl: './realty-list.component.html',
   styleUrls: ['./realty-list.component.css']
 })
-export class RealtyListComponent implements OnInit,OnDestroy {
+export class RealtyListComponent implements OnInit {
   list: Realty[] = [];
-  subscription: Subscription;
-  constructor(private data: RealtyDataService) { }
+  constructor(private store: Store<{realty: InitialState}>) { }
 
   ngOnInit() {
-    this.renewList();
-    this.subscription = this.data.changeEmitter.subscribe(() => {
-      this.renewList()
+    this.store.select('realty').subscribe((state: InitialState) => {
+      this.list = state.realtyList;
     });
-  }
-  renewList() {
-    this.list = this.data.getNewList()
-  }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

@@ -12,6 +12,8 @@ import { RealtyListComponent } from './realty-list/realty-list.component';
 import { RealtyItemComponent } from './realty-list/realty-item/realty-item.component';
 import {RealtyDataService} from "./realty-data.service";
 import {realtyReducer} from "./realty-list/store/realty.reducer";
+import {EffectsModule} from "@ngrx/effects";
+import {ParamsRealtyEffect} from "./realty-list/store/realty.effects";
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import {realtyReducer} from "./realty-list/store/realty.reducer";
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    EffectsModule.forRoot([ParamsRealtyEffect]),
     // RoutingModule,
     StoreModule.forRoot({ realty: realtyReducer }),
     // ReactiveFormsModule
