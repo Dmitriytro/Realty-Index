@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Store} from "@ngrx/store";
-import {Params} from "../realty-list/params.model";
 import * as RealtyActions from "../realty-list/store/realty.actions";
+import {RealtyState} from "../realty-list/store/realty.reducer";
 
 @Component({
   selector: 'app-navigation',
@@ -10,7 +10,7 @@ import * as RealtyActions from "../realty-list/store/realty.actions";
   styleUrls: ['navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  constructor(private store: Store<Params>) { }
+  constructor(private store: Store<RealtyState>) { }
 
   ngOnInit() {}
 

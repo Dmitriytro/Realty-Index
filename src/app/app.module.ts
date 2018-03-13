@@ -10,7 +10,6 @@ import { NavigationTabsComponent } from './navigation/navigation-tabs/navigation
 import {ServerCommunicationService} from "./server-communication.service";
 import { RealtyListComponent } from './realty-list/realty-list.component';
 import { RealtyItemComponent } from './realty-list/realty-item/realty-item.component';
-import {RealtyDataService} from "./realty-data.service";
 import {realtyReducer} from "./realty-list/store/realty.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {ParamsRealtyEffect} from "./realty-list/store/realty.effects";
@@ -41,10 +40,10 @@ import {ParamsRealtyEffect} from "./realty-list/store/realty.effects";
     HttpClientModule,
     EffectsModule.forRoot([ParamsRealtyEffect]),
     // RoutingModule,
-    StoreModule.forRoot({ realty: realtyReducer }),
+    StoreModule.forRoot({ realtyReducer: realtyReducer }),
     // ReactiveFormsModule
   ],
-  providers: [ServerCommunicationService,RealtyDataService],
+  providers: [ServerCommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

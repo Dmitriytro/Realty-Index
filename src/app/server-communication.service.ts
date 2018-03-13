@@ -5,7 +5,7 @@ import {Params} from "./realty-list/params.model";
 import {Store} from "@ngrx/store";
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-import {InitialState} from "./realty-list/store/initialState.model";
+import {RealtyState} from "./realty-list/store/realty.reducer";
 
 @Injectable()
 export class ServerCommunicationService {
@@ -18,8 +18,8 @@ export class ServerCommunicationService {
     })
   };
   serverUrl: string = `https://search.onboard-apis.com/propertyapi/v1.0.0/property/address`;
-  constructor(private httpClient: HttpClient, private store: Store<{realty: InitialState}>) {
-    this.store.select('realty').subscribe((data) => {
+  constructor(private httpClient: HttpClient, private store: Store<RealtyState>) {
+    this.store.select('realtyReducer').subscribe((data) => {
       this.params = data.params;
     });
   }

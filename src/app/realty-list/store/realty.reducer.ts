@@ -13,3 +13,7 @@ export function realtyReducer(state = initialState, action: Actions.RealtyAction
     default: return state
   }
 }
+
+export interface RealtyState {
+  realtyReducer: InitialState
+}
