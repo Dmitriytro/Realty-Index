@@ -15,7 +15,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {}
 
   search(searchInput: NgForm){
-    this.store.dispatch(new RealtyActions.setParams(searchInput.value));
+    this.store.dispatch(new RealtyActions.SetParams(searchInput.value));
     searchInput.reset();
   }
 }

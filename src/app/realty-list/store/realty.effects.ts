@@ -18,7 +18,7 @@ export class ParamsRealtyEffect {
     .ofType(RealtyActions.CONFIG_PARAMS)
     .concatMap(() => this.serverCommunication.fetching()
       .pipe(
-        map((response: any) => new RealtyActions.getRealty(response.property)),
+        map((response: any) => new RealtyActions.GetRealty(response.property)),
         catchError((error) => of(error))
       )
     )

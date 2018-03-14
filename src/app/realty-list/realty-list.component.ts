@@ -18,4 +18,7 @@ export class RealtyListComponent implements OnInit {
       this.list = state.realtyList;
     });
   }
+  selection(index: number) {
+
+  }
 }

@@ -3,5 +3,6 @@ import {Realty} from "../realty.model";
 
 export class InitialState {
   constructor(public params: Params){}
-  realtyList: Realty[] = [];
+  public realtyList: Realty[] = [];
+  public selected: Realty = null;
 }
