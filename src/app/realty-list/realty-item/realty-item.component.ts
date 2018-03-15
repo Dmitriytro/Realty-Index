@@ -8,6 +8,7 @@ import {Realty} from "../realty.model";
 })
 export class RealtyItemComponent implements OnInit {
   @Input() realty: Realty;
+  @Input() selected: Realty;
   constructor() { }
 
   ngOnInit() {}

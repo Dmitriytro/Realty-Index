@@ -1,5 +1,4 @@
-<a class="list-group-item clearfix"
-   routerLinkActive="active">
+<a class="list-group-item clearfix" [ngClass]="{active: realty === selected}">
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ realty.identifier.obPropId }}</h4>
     <p class="list-group-item-text">{{ realty.address.line1 }}</p>

@@ -13,6 +13,10 @@ import { RealtyItemComponent } from './realty-list/realty-item/realty-item.compo
 import {realtyReducer} from "./realty-list/store/realty.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {ParamsRealtyEffect} from "./realty-list/store/realty.effects";
+import { RealtyDetailComponent } from './realty-detail/realty-detail.component';
+import { KeysPipe } from './keys.pipe';
+import {AgmCoreModule} from "@agm/core";
+import {googleMapKey} from "../../googleMapKey";
 
 
 @NgModule({
@@ -21,7 +25,9 @@ import {ParamsRealtyEffect} from "./realty-list/store/realty.effects";
     NavigationComponent,
     NavigationTabsComponent,
     RealtyListComponent,
-    RealtyItemComponent
+    RealtyItemComponent,
+    RealtyDetailComponent,
+    KeysPipe
     // RecipesComponent,
     // RecipeListComponent,
     // RecipeDetailComponent,
@@ -39,8 +45,11 @@ import {ParamsRealtyEffect} from "./realty-list/store/realty.effects";
     FormsModule,
     HttpClientModule,
     EffectsModule.forRoot([ParamsRealtyEffect]),
-    // RoutingModule,
     StoreModule.forRoot({ realtyReducer: realtyReducer }),
+    AgmCoreModule.forRoot({
+      apiKey: googleMapKey
+    })
+    // RoutingModule,
     // ReactiveFormsModule
   ],
   providers: [ServerCommunicationService],
