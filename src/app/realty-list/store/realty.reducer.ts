@@ -1,10 +1,20 @@
 import * as RealtyActions from "./realty.actions";
 import {Params} from "../params.model";
-import {InitialState} from "./initialState.model";
+import {Realty} from "../realty.model";
 
-const initialState: InitialState = new InitialState(new Params( `97219`,'TOWNHOUSE/ROWHOUSE','assdttlvalue','1','10'));
+export interface State {
+  params: Params,
+  realtyList: Realty[],
+  selected: Realty
+}
 
-export function realtyReducer(state = initialState, action: RealtyActions.Actions): InitialState {
+const initialState: State = {
+  params: new Params(`97219`, 'TOWNHOUSE/ROWHOUSE', 'assdttlvalue', '1', '10'),
+  realtyList: [],
+  selected: null
+};
+
+export function realtyReducer(state = initialState, action: RealtyActions.Actions) {
   switch (action.type) {
     case RealtyActions.SELECT_PROPERTY:
       return {...state, selected: state.realtyList[action.payload]};
@@ -14,8 +24,4 @@ export function realtyReducer(state = initialState, action: RealtyActions.Action
       return {...state, realtyList: [...action.payload]};
     default: return state
   }
-}
-
-export interface RealtyState {
-  realtyReducer: InitialState
 }

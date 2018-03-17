@@ -10,13 +10,13 @@ import { NavigationTabsComponent } from './navigation/navigation-tabs/navigation
 import {ServerCommunicationService} from "./server-communication.service";
 import { RealtyListComponent } from './realty-list/realty-list.component';
 import { RealtyItemComponent } from './realty-list/realty-item/realty-item.component';
-import {realtyReducer} from "./realty-list/store/realty.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {ParamsRealtyEffect} from "./realty-list/store/realty.effects";
-import { RealtyDetailComponent } from './realty-detail/realty-detail.component';
+import { RealtyDetailComponent } from './realty-list/realty-detail/realty-detail.component';
 import { KeysPipe } from './keys.pipe';
 import {AgmCoreModule} from "@agm/core";
 import {googleMapKey} from "../../googleMapKey";
+import {reducers} from "./store/app.reducer";
 
 
 @NgModule({
@@ -28,15 +28,7 @@ import {googleMapKey} from "../../googleMapKey";
     RealtyItemComponent,
     RealtyDetailComponent,
     KeysPipe
-    // RecipesComponent,
-    // RecipeListComponent,
-    // RecipeDetailComponent,
-    // RecipeItemComponent,
-    // ShoppingListComponent,
-    // ShoppingEditComponent,
     // DropdownDirective,
-    // NoRecipeSelectedComponent,
-    // RecipeEditComponent,
     // ReversePipe,
     // SortByPipe
   ],
@@ -45,7 +37,7 @@ import {googleMapKey} from "../../googleMapKey";
     FormsModule,
     HttpClientModule,
     EffectsModule.forRoot([ParamsRealtyEffect]),
-    StoreModule.forRoot({ realtyReducer: realtyReducer }),
+    StoreModule.forRoot(reducers),
     AgmCoreModule.forRoot({
       apiKey: googleMapKey
     })

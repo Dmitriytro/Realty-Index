@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Realty} from "./realty.model";
 import {Store} from "@ngrx/store";
-import {InitialState} from "./store/initialState.model";
-import {RealtyState} from "./store/realty.reducer";
+import {Realty} from "./realty.model";
 import * as RealtyActions from "./store/realty.actions";
+import {AppState} from "../store/app.reducer";
+import {State} from "./store/realty.reducer";
 
 @Component({
   selector: 'app-realty-list',
@@ -13,10 +13,10 @@ import * as RealtyActions from "./store/realty.actions";
 export class RealtyListComponent implements OnInit {
   list: Realty[] = [];
   selected: Realty = null;
-  constructor(private store: Store<RealtyState>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.store.select('realtyReducer').subscribe((state: InitialState) => {
+    this.store.select('realtyReducer').subscribe((state: State) => {
       this.list = state.realtyList;
       this.selected = state.selected;
     });

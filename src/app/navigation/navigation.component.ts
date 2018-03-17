@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Store} from "@ngrx/store";
 import * as RealtyActions from "../realty-list/store/realty.actions";
-import {RealtyState} from "../realty-list/store/realty.reducer";
+import {AppState} from "../store/app.reducer";
 
 @Component({
   selector: 'app-navigation',
@@ -10,7 +10,7 @@ import {RealtyState} from "../realty-list/store/realty.reducer";
   styleUrls: ['navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  constructor(private store: Store<RealtyState>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {}
 
