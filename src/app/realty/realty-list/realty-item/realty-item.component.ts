@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Realty} from "../realty.model";
+import { Component, Input, OnInit } from '@angular/core';
+import { Realty } from '../realty.model';
 
 @Component({
   selector: 'app-realty-item',

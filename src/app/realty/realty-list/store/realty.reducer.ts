@@ -1,11 +1,11 @@
-import * as RealtyActions from "./realty.actions";
-import {Params} from "../params.model";
-import {Realty} from "../realty.model";
+import * as RealtyActions from './realty.actions';
+import { Params } from '../params.model';
+import { Realty } from '../realty.model';
 
 export interface State {
-  params: Params,
-  realtyList: Realty[],
-  selected: Realty
+  params: Params;
+  realtyList: Realty[];
+  selected: Realty;
 }
 
 const initialState: State = {
@@ -22,6 +22,6 @@ export function realtyReducer(state = initialState, action: RealtyActions.Action
       return {...state, params: {...state.params, ...action.payload}};
     case RealtyActions.GET_REALTY:
       return {...state, realtyList: [...action.payload]};
-    default: return state
+    default: return state;
   }
 }

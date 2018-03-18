@@ -4,5 +4,5 @@ export class Params {
     public propertytype?: string,
     public orderby?: string,
     public page?: string,
-    public pagesize?: string){}
+    public pagesize?: string) {}
 }

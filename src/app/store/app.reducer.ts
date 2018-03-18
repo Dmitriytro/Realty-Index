@@ -1,8 +1,8 @@
-import {ActionReducerMap} from "@ngrx/store";
-import * as realty from "../realty-list/store/realty.reducer";
+import { ActionReducerMap } from '@ngrx/store';
+import * as realty from '../realty/realty-list/store/realty.reducer';
 
 export interface AppState {
-  realtyReducer: realty.State
+  realtyReducer: realty.State;
 }
 
 export const reducers: ActionReducerMap<AppState> = {

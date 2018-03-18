@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <app-realty-item *ngFor="let item of (realtyState | async).realtyList; let i = index"
+                     [realty]="item"
+                     [selected]="(realtyState | async).selected"
+                     (click)="selection(i)"
+                     ></app-realty-item>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <app-realty-detail *ngIf="(realtyState | async).selected" [selected]="(realtyState | async).selected"></app-realty-detail>
+  </div>
+</div>

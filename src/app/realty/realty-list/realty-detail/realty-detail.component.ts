@@ -1,12 +1,12 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {Realty} from "../realty.model";
+import {Realty} from '../realty.model';
 
 @Component({
   selector: 'app-realty-detail',
   templateUrl: './realty-detail.component.html',
   styleUrls: ['./realty-detail.component.css']
 })
-export class RealtyDetailComponent implements OnInit,OnChanges {
+export class RealtyDetailComponent implements OnInit, OnChanges {
   @Input('selected') item: Realty;
   title: string = 'Property location';
   lat: number;
@@ -19,7 +19,7 @@ export class RealtyDetailComponent implements OnInit,OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     this.rerenderMap(changes.item.currentValue);
   }
-  rerenderMap(value: Realty){
+  rerenderMap(value: Realty) {
     this.lat = +value.location.latitude;
     this.lng = +value.location.longitude;
   }
