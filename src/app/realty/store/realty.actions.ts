@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { Params } from '../params.model';
-import { Realty } from '../realty.model';
+import { Params } from '../realty-list/params.model';
+import { Realty } from '../realty-list/realty.model';
 
 export const CONFIG_PARAMS = 'config_params';
 export const GET_REALTY = 'get_realty';

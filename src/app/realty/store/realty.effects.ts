@@ -6,7 +6,7 @@ import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/map';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
-import { ServerCommunicationService } from '../../../server-communication.service';
+import { ServerCommunicationService } from '../../server-communication.service';
 
 @Injectable()
 export class ParamsRealtyEffect {

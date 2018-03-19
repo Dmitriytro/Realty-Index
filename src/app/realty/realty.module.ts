@@ -9,8 +9,8 @@ import { RealtyItemComponent } from './realty-list/realty-item/realty-item.compo
 import { RealtyListComponent } from './realty-list/realty-list.component';
 import { RealtyDetailComponent } from './realty-list/realty-detail/realty-detail.component';
 
-import { realtyReducer } from './realty-list/store/realty.reducer';
-import { ParamsRealtyEffect } from './realty-list/store/realty.effects';
+import { realtyReducer } from './store/realty.reducer';
+import { ParamsRealtyEffect } from './store/realty.effects';
 import { googleMapKey } from '../../../googleMapKey';
 import { KeysPipe } from '../keys.pipe';
 

@@ -6,7 +6,7 @@ import {Store} from '@ngrx/store';
 import {AppState} from './store/app.reducer';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-import {State} from './realty/realty-list/store/realty.reducer';
+import {State} from './realty/store/realty.reducer';
 
 @Injectable()
 export class ServerCommunicationService {
@@ -28,5 +28,7 @@ export class ServerCommunicationService {
     this.httpOptions['params'] = this.params;
     return this.httpClient.get(this.serverUrl, this.httpOptions);
   }
-
+  sign(body) {
+    return this.httpClient.put(`https://localhost:3000`, body, this.httpOptions);
+  }
 }

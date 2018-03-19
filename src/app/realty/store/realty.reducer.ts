@@ -1,6 +1,6 @@
 import * as RealtyActions from './realty.actions';
-import { Params } from '../params.model';
-import { Realty } from '../realty.model';
+import { Params } from '../realty-list/params.model';
+import { Realty } from '../realty-list/realty.model';
 
 export interface State {
   params: Params;

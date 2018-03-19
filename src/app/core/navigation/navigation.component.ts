@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import * as RealtyActions from '../../realty/realty-list/store/realty.actions';
+import * as RealtyActions from '../../realty/store/realty.actions';
 import {AppState} from '../../store/app.reducer';
 
 @Component({

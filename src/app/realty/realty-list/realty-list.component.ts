@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as RealtyActions from './store/realty.actions';
+import * as RealtyActions from '../store/realty.actions';
 import { AppState } from '../../store/app.reducer';
-import { State } from './store/realty.reducer';
+import { State } from '../store/realty.reducer';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

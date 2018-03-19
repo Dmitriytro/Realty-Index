@@ -1,6 +1,9 @@
 <div class="navbar-default">
-  <ul class="nav navbar-nav">
-    <li><a>link 1</a></li>
-    <li><a>link 2</a></li>
+  <ul class="nav navbar-nav" *ngIf="!(this.authState | async).isAuthenticated">
+    <li [routerLink]="['/auth','signin']"><a>Sign In</a></li>
+    <li [routerLink]="['/auth','signup']"><a>Sign Up</a></li>
+  </ul>
+  <ul class="nav navbar-nav" *ngIf="(this.authState | async).isAuthenticated">
+    <li [routerLink]="['/auth','signout']"><a>Sign Out</a></li>
   </ul>
 </div>

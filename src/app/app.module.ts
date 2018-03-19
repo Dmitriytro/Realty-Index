@@ -9,7 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { ParamsRealtyEffect } from './realty/realty-list/store/realty.effects';
+import { ParamsRealtyEffect } from './realty/store/realty.effects';
 import { reducers } from './store/app.reducer';
 import { RealtyModule } from './realty/realty.module';
 import { SharedModule } from './shared/shared.module';
