@@ -14,6 +14,6 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {}
   signIn(form) {
-    this.store.dispatch(new authActions.OnSign(form.value));
+    this.store.dispatch(new authActions.OnSignIn(form.value));
   }
 }

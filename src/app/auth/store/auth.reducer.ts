@@ -12,12 +12,21 @@ const initialState: State = {
 
 export function authReducer(state = initialState, action: AuthActions.Actions) {
   switch (action.type) {
-    case AuthActions.TRYSIGN:
+    case AuthActions.TRYSIGNIN:
+      return {...state};
+    case AuthActions.TRYSIGNUP:
       return {...state};
     case AuthActions.SIGNSUCCESS:
+      return {...state, isAuthenticated: true};
+    case AuthActions.SIGNINERROR:
       return {...state};
-    case AuthActions.SIGNERROR:
+    case AuthActions.SIGNUPERROR:
       return {...state};
+    case AuthActions.SIGNOUT:
+      return {...state};
+    case AuthActions.SETTOKEN:
+      console.log(action.payload);
+      return {...state, token: action.payload};
     default: return state;
   }
 }

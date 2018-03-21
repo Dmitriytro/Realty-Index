@@ -28,7 +28,4 @@ export class ServerCommunicationService {
     this.httpOptions['params'] = this.params;
     return this.httpClient.get(this.serverUrl, this.httpOptions);
   }
-  sign(body) {
-    return this.httpClient.put(`https://localhost:3000`, body, this.httpOptions);
-  }
 }

@@ -43,4 +43,5 @@ testem.log
 .DS_Store
 Thumbs.db
 apiKey.ts
+firebaseApiKey.ts
 googleMapKey.ts

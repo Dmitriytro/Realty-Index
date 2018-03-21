@@ -7,6 +7,9 @@ import { AuthRoutingModule } from './auth-routing/auth-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './store/auth.reducer';
+import { AuthService } from './auth.service';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,8 @@ import { authReducer } from './store/auth.reducer';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forFeature('authReducer', authReducer),
-  ]
+    EffectsModule.forFeature([AuthEffects]),
+  ],
+  providers: [AuthService]
 })
 export class AuthModule { }
