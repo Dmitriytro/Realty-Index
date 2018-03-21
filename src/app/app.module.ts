@@ -31,7 +31,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     AuthModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ParamsRealtyEffect),
+    EffectsModule.forRoot([ParamsRealtyEffect]),
     StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],

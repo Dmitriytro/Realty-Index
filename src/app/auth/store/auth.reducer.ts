@@ -23,9 +23,8 @@ export function authReducer(state = initialState, action: AuthActions.Actions) {
     case AuthActions.SIGNUPERROR:
       return {...state};
     case AuthActions.SIGNOUT:
-      return {...state};
+      return {...state, token: null, isAuthenticated: false};
     case AuthActions.SETTOKEN:
-      console.log(action.payload);
       return {...state, token: action.payload};
     default: return state;
   }
