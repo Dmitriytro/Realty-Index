@@ -4,10 +4,9 @@ import * as AuthActions from './auth.actions';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
-import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/do';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 
 @Injectable()
@@ -52,5 +51,10 @@ export class AuthEffects {
         new AuthActions.OnSighSuccess(),
         new AuthActions.OnSetToken(token)
       ];
+    });
+  @Effect() onSignOut = this.actions$
+    .ofType(AuthActions.SIGNOUT)
+    .do(() => {
+      this.router.navigate(['/']);
     });
 }
