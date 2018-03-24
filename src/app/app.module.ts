@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     SharedModule,
     AuthModule,
     AppRoutingModule,
+    MaterialModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([ParamsRealtyEffect]),
     StoreRouterConnectingModule,

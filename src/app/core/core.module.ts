@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ServerCommunicationService } from '../server-communication.service';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ServerCommunicationService } from '../server-communication.service';
     SharedModule,
     AppRoutingModule,
     FormsModule,
+    MaterialModule
   ],
   providers: [
     ServerCommunicationService
