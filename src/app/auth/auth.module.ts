@@ -9,6 +9,8 @@ import { authReducer } from './store/auth.reducer';
 import { AuthService } from './auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/auth.effects';
+import { MaterialModule } from '../material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { AuthEffects } from './store/auth.effects';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
+    FlexLayoutModule,
     StoreModule.forFeature('authReducer', authReducer),
     EffectsModule.forFeature([AuthEffects]),
   ],

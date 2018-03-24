@@ -1,31 +1,24 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form (ngSubmit)="signIn(signinForm)" #signinForm="ngForm">
-      <label for="email">Email</label>
-      <input
-        class="form-control"
-        required
-        name="email"
-        id="email"
-        email
-        ngModel
-        #email="ngModel"
-        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-        type="text">
-      <span class="help-block" *ngIf="!email.valid && email.touched">Email is invalid</span>
-      <hr>
-      <label for="password">Password</label>
-      <input
-        ngModel
-        #password="ngModel"
-        class="form-control"
-        required
-        id="password"
-        name="password"
-        type="password">
-      <span class="help-block" *ngIf="!password.valid && password.touched">Password is required</span>
-      <hr>
-      <button type="submit" class="btn btn-success" [disabled]="!signinForm.valid" >Sign In</button>
-    </form>
-  </div>
-</div>
+<section>
+  <form (ngSubmit)="signIn(signinForm)" #signinForm="ngForm" fxLayout="column" fxLayoutAlign="center center" class="signin-form">
+    <mat-form-field>
+      <input type="email"
+             matInput
+             required
+             name="email"
+             ngModel
+             #email="ngModel"
+             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+             placeholder="Your email">
+    </mat-form-field>
+    <mat-form-field>
+      <input #password="ngModel"
+             matInput
+             ngModel
+             required
+             name="password"
+             placeholder="Your password"
+             type="password">
+    </mat-form-field>
+    <button type="submit" mat-raised-button [disabled]="!signinForm.valid" >Sign In</button>
+  </form>
+</section>

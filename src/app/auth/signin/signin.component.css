@@ -1,6 +1,3 @@
-input.ng-touched.ng-invalid {
-  border: 1px solid darkred;
-}
-input.ng-touched.ng-valid {
-  border: 1px solid darkgreen;
+mat-form-field{
+  width: 300px;
 }
