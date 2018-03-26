@@ -1,5 +1,5 @@
 <section>
-  <form (ngSubmit)="signIn(signinForm)" #signinForm="ngForm" fxLayout="column" fxLayoutAlign="center center" class="signin-form">
+  <form (ngSubmit)="signIn(signinForm)" #signinForm="ngForm" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" class="signin-form">
     <mat-form-field>
       <input type="email"
              matInput
@@ -9,16 +9,20 @@
              #email="ngModel"
              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
              placeholder="Your email">
+      <mat-error *ngIf="email.value?.length > 0 && email.invalid && email.touched">E-Mail is invalid.</mat-error>
+      <mat-error *ngIf="email.value?.length === 0 && email.touched">E-Mail must not be empty</mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field hintLabel="Should be at least 6 characters long.">
       <input #password="ngModel"
              matInput
              ngModel
              required
              name="password"
              placeholder="Your password"
+             minlength="6"
              type="password">
+      <mat-hint *ngIf="password.invalid && password.touched" align="end">{{password.value?.length}} / 6</mat-hint>
     </mat-form-field>
-    <button type="submit" mat-raised-button [disabled]="!signinForm.valid" >Sign In</button>
+    <button type="submit" mat-raised-button [disabled]="!signinForm.valid" color="primary">Sign In</button>
   </form>
 </section>

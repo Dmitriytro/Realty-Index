@@ -1,42 +1,39 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form (ngSubmit)="signUp(signupForm)" #signupForm="ngForm">
-      <label for="email">Email</label>
-      <input
-        class="form-control"
-        required
-        name="email"
-        id="email"
-        email
-        ngModel
-        #email="ngModel"
-        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-        type="text">
-      <span class="help-block" *ngIf="!email.valid && email.touched">Email is invalid</span>
-      <hr>
-      <label for="password">Password</label>
-      <input
-        ngModel
-        #password="ngModel"
-        class="form-control"
-        required
-        id="password"
-        name="password"
-        type="password">
-      <span class="help-block" *ngIf="!password.valid && password.touched">Password is required</span>
-      <hr>
-      <label for="confirmPassword">Retype password</label>
-      <input
-        ngModel
-        #confirmPassword="ngModel"
-        class="form-control"
-        required
-        id="confirmPassword"
-        name="confirmPassword"
-        type="password">
-      <span class="help-block" *ngIf="confirmPassword.value !== password.value && confirmPassword.touched">Passwords is not match</span>
-      <hr>
-      <button type="submit" class="btn btn-success" [disabled]="!signupForm.valid" >Sign Up</button>
-    </form>
-  </div>
-</div>
+<section>
+  <form (ngSubmit)="signUp(signupForm)" #signupForm="ngForm" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" class="signin-form">
+    <mat-form-field>
+      <input type="email"
+             matInput
+             required
+             name="email"
+             ngModel
+             #email="ngModel"
+             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+             placeholder="Your email">
+      <mat-error *ngIf="email.value?.length > 0 && email.invalid && email.touched">E-Mail is invalid.</mat-error>
+      <mat-error *ngIf="email.value?.length === 0 && email.touched">E-Mail must not be empty</mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="Should be at least 6 characters long.">
+      <input #password="ngModel"
+             matInput
+             ngModel
+             required
+             name="password"
+             placeholder="Your password"
+             minlength="6"
+             type="password">
+      <mat-hint *ngIf="password.invalid && password.touched" align="end">{{password.value?.length}} / 6</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input #confirmPassword="ngModel"
+             matInput
+             ngModel
+             required
+             name="confirmPassword"
+             placeholder="Retype password"
+             minlength="6"
+             type="password">
+      <mat-error *ngIf="confirmPassword !== password && confirmPassword.touched">Passwords do not match</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button [disabled]="!signupForm.valid" color="primary">Sign Up</button>
+  </form>
+</section>
