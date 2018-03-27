@@ -1,0 +1,14 @@
+<mat-sidenav-container>
+  <mat-sidenav role="navigation" #sidenav>i'm a sidenav!</mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <app-navigation></app-navigation>
+        <button mat-raised-button color="primary" (click)="sidenav.toggle()">Open</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

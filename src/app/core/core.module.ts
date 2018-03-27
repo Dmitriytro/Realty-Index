@@ -7,12 +7,14 @@ import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ServerCommunicationService } from '../server-communication.service';
 import { MaterialModule } from '../material/material.module';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     NavigationComponent,
     NavigationTabsComponent,
-    HomeComponent
+    HomeComponent,
+    SidenavComponent
   ],
   imports: [
     SharedModule,
@@ -25,7 +27,8 @@ import { MaterialModule } from '../material/material.module';
   ],
   exports: [
     AppRoutingModule,
-    NavigationComponent
+    NavigationComponent,
+    SidenavComponent
   ]
 })
 export class CoreModule { }
