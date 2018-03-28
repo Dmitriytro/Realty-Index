@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatListModule,
   MatSidenavModule,
   MatToolbarModule
 } from '@angular/material';
@@ -20,7 +20,8 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatIconModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -29,7 +30,8 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatIconModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
 import { Store } from '@ngrx/store';
@@ -13,6 +13,7 @@ import * as RealtyActions from '../../realty/store/realty.actions';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
+  @ViewChild('sidenav') sidenav;
   authState: Observable<{token: string, isAuthenticated: boolean}>;
   constructor(private store: Store<AppState>) { }
 
@@ -20,6 +21,7 @@ export class SidenavComponent implements OnInit {
     this.authState = this.store.select('authReducer');
   }
   onSignOut() {
+    this.sidenav.close();
     firebase.auth().signOut();
     this.store.dispatch(new AuthActions.OnSighOut());
   }
