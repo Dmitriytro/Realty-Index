@@ -2,9 +2,38 @@
   <mat-sidenav role="navigation" #sidenav>i'm a sidenav!</mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <app-navigation></app-navigation>
-        <button mat-raised-button color="primary" (click)="sidenav.toggle()">Open</button>
+      <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="navbar-default">
+          <ul class="nav navbar-nav" *ngIf="!(this.authState | async).isAuthenticated">
+            <li>
+              <button mat-raised-button color="accent" (click)="sidenav.toggle()">Open Menu</button>
+            </li>
+            <li [routerLink]="['/auth','signin']">
+              <button mat-raised-button color="accent">Sign In</button>
+            </li>
+            <li [routerLink]="['/auth','signup']">
+              <button mat-raised-button color="accent">Sign Up</button>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav" *ngIf="(this.authState | async).isAuthenticated">
+            <li>
+              <button mat-raised-button color="accent" (click)="sidenav.toggle()">Open Menu</button>
+            </li>
+            <li routerLink="/" (click)="onSignOut()"><a>Sign Out</a></li>
+          </ul>
+        </div>
+        <form class="navbar-form" (ngSubmit)="search(f)" #f="ngForm">
+          <div class="form-group">
+            <label>Postal code: </label>
+            <input type="text"
+                   ngModel
+                   name="postalcode"
+                   class="form-control"
+                   required
+                   pattern='^\d{5}(?:[\s]?[-\s][\s]?\d{4})?$'>
+          </div>
+          <button type="submit" mat-raised-button color="accent" [disabled]="!f.valid">Search</button>
+        </form>
       </mat-toolbar-row>
     </mat-toolbar>
     <main>
