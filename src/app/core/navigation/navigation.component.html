@@ -1,0 +1,23 @@
+<mat-nav-list fxHide.gt-xs>
+  <a [routerLink]="['/auth','signin']"
+     *ngIf="!(this.authState | async).isAuthenticated"
+     (click)="sidenav.close()"
+     mat-list-item>
+    <mat-icon>face</mat-icon>
+    <span class="icon-caption">Sign In</span>
+  </a>
+  <a [routerLink]="['/auth','signup']"
+     *ngIf="!(this.authState | async).isAuthenticated"
+     (click)="sidenav.close()"
+     mat-list-item>
+    <mat-icon>assignment ind</mat-icon>
+    <span class="icon-caption">Sign Up</span>
+  </a>
+  <a routerLink="/"
+     *ngIf="(this.authState | async).isAuthenticated"
+     (click)="onSignOut(sidenav)"
+     mat-list-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span class="icon-caption">Sign Out</span>
+  </a>
+</mat-nav-list>

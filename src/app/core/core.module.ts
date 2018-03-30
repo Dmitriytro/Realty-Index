@@ -7,11 +7,15 @@ import { ServerCommunicationService } from '../server-communication.service';
 import { MaterialModule } from '../material/material.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NavigationComponent } from './navigation/navigation.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    SidenavComponent
+    SidenavComponent,
+    NavigationComponent,
+    ToolbarComponent
   ],
   imports: [
     SharedModule,

@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div fxHide.xs>
+      <div *ngIf="!(this.authState | async).isAuthenticated">
+        <a [routerLink]="['/auth','signin']">
+          <button mat-raised-button color="accent">Sign In</button>
+        </a>
+        <a [routerLink]="['/auth','signup']">
+          <button mat-raised-button color="accent">Sign Up</button>
+        </a>
+      </div>
+      <div *ngIf="(this.authState | async).isAuthenticated">
+        <a routerLink="/" (click)="onSignOut()">
+          <button mat-raised-button>Sign Out</button>
+        </a>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

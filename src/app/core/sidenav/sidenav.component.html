@@ -1,28 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav role="navigation" #sidenav>
-    <mat-nav-list fxHide.gt-xs>
-      <a [routerLink]="['/auth','signin']"
-         *ngIf="!(this.authState | async).isAuthenticated"
-         (click)="sidenav.close()"
-         mat-list-item>
-        <mat-icon>face</mat-icon>
-        <span class="icon-caption">Sign In</span>
-      </a>
-      <a [routerLink]="['/auth','signup']"
-         *ngIf="!(this.authState | async).isAuthenticated"
-         (click)="sidenav.close()"
-         mat-list-item>
-        <mat-icon>assignment ind</mat-icon>
-        <span class="icon-caption">Sign Up</span>
-      </a>
-      <a routerLink="/"
-         (click)="onSignOut()"
-         *ngIf="!(this.authState | async).isAuthenticated"
-         mat-list-item>
-        <mat-icon>exit_to_app</mat-icon>
-        <span class="icon-caption">Sign Out</span>
-      </a>
-    </mat-nav-list>
+    <app-navigation [sidenav]="sidenav"></app-navigation>
     <form (ngSubmit)="search(f)" #f="ngForm" color="accent">
       <mat-form-field>
         <input type="text"
@@ -37,30 +15,7 @@
     </form>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <div>
-          <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-          </button>
-        </div>
-        <div fxHide.xs>
-          <div *ngIf="!(this.authState | async).isAuthenticated">
-            <a [routerLink]="['/auth','signin']">
-              <button mat-raised-button color="accent">Sign In</button>
-            </a>
-            <a [routerLink]="['/auth','signup']">
-              <button mat-raised-button color="accent">Sign Up</button>
-            </a>
-          </div>
-          <div class="nav navbar-nav" *ngIf="(this.authState | async).isAuthenticated">
-            <a routerLink="/" (click)="onSignOut()">
-              <button mat-raised-button>Sign Out</button>
-            </a>
-          </div>
-        </div>
-      </mat-toolbar-row>
-    </mat-toolbar>
+    <app-toolbar [sidenav]="sidenav"></app-toolbar>
     <main>
       <router-outlet></router-outlet>
     </main>
